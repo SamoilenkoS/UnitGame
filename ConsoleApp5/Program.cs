@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleApp5
 {
@@ -43,16 +44,16 @@ namespace ConsoleApp5
                 units[1] = new Archer();
                 int attack = 0;
                 int defence = 1;
-                while (units[0].HP > 0 && units[1].HP > 0)
+                while (units.All(x => x.HP > 0))
                 {
                     units[attack].Attack(units[defence]);
                     Swap(ref attack, ref defence);
                 }
+
                 warriorsWinCount += units[0].HP > 0 ? 1 : 0;
             }
 
             Console.WriteLine(warriorsWinCount);
-            Console.WriteLine($"{(double)Archer.DodgeCount/Archer.AttackCount}");
         }
     }
 }
